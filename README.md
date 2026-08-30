@@ -1,123 +1,386 @@
-# 🎮 CONNECT 4: Neural Arena
+# 🎮 CONNECT4: Neural Arena
 
-> A cinematic Connect 4 experience combining classical game-playing AI, real-time search telemetry, adaptive difficulty, and a fully interactive Pygame interface.
+> **An AI-powered Connect4 game featuring intelligent game-tree search, real-time AI telemetry, dynamic themes, procedural audio, and automated deployment.**
 
-**Neural Arena** is a feature-rich Connect 4 game built in Python and Pygame. It goes beyond simply playing against an AI by exposing the decision-making process behind every move.
+[![Python](https://img.shields.io/badge/Python-3.11+-blue?logo=python)](https://www.python.org/)
+[![Pygame](https://img.shields.io/badge/Pygame-Game%20Engine-green)](https://www.pygame.org/)
+[![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Computing-orange?logo=numpy)](https://numpy.org/)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey?logo=windows)](https://www.microsoft.com/windows)
+[![License](https://img.shields.io/badge/License-Educational-lightblue)](#)
 
-The project implements multiple AI search strategies, ranging from randomized play to iterative-deepening Alpha-Beta search with transposition tables, while providing live statistics such as nodes explored, branches pruned, search depth, evaluation time, and nodes per second.
+---
+
+## 🧠 About the Project
+
+**CONNECT4: Neural Arena** is an AI-powered implementation of the classic Connect4 board game, developed using **Python and Pygame**.
+
+The project focuses on demonstrating how **Artificial Intelligence search algorithms** can be applied to a competitive two-player game. The AI analyzes possible future game states and selects strategic moves using **Minimax**, optimized with **Alpha-Beta Pruning** and supported by a **heuristic evaluation function**.
+
+The project also goes beyond basic gameplay by providing real-time insight into the AI's decision-making process through an interactive telemetry system.
 
 ---
 
 ## ✨ Features
 
-### 🤖 Multi-Level AI
+### 🎯 Multiple Game Modes
 
-Five AI difficulty levels progressively increase the depth and sophistication of the search:
+* **Human vs Human** — Play against another person.
+* **Human vs AI** — Challenge the AI at different difficulty levels.
+* **AI vs AI** — Watch two AI players compete against each other.
 
-| Difficulty | Strategy | Search |
-|------------|----------|--------|
-| 🟢 Easy | Random / Shallow | Randomized moves |
-| 🟡 Medium | Minimax | Depth 3 |
-| 🟠 Hard | Alpha-Beta | Depth 5 |
-| 🔴 Expert | Alpha-Beta + Move Ordering | Depth 6 |
-| 🟣 Impossible | Iterative Deepening + Transposition Table | Up to Depth 7 |
+### 🤖 Artificial Intelligence
 
-The AI also introduces controlled move variation so that games do not always follow the exact same sequence when multiple moves have equivalent evaluations.
-
----
-
-### 🧠 AI Search & Optimization
-
-The AI engine demonstrates several fundamental game-playing techniques:
-
-- **Minimax Search**
-- **Alpha-Beta Pruning**
-- **Iterative Deepening**
-- **Transposition Tables**
-- **Center-first Move Ordering**
-- **Heuristic Board Evaluation**
-- **Terminal-state detection**
-- **Search-depth management**
-- **Move selection with controlled randomness**
-
-The Impossible difficulty reuses search information through a transposition table while progressively increasing the search depth.
-
----
+* Minimax game-tree search
+* Alpha-Beta pruning optimization
+* Heuristic board evaluation
+* Configurable search depth
+* Strategic center-column preference
+* Offensive and defensive move evaluation
+* AI move scoring
 
 ### 📊 Real-Time AI Telemetry
 
-One of the main goals of Neural Arena is to make the AI's decision-making visible.
+The Neural Arena provides an engine-style telemetry panel showing information such as:
 
-During an AI turn, the interface can display:
+* Search depth
+* Nodes explored
+* Nodes per second (NPS)
+* Branches pruned
+* Evaluation score
+* Best move
+* AI thinking status
 
-- Algorithm being used
-- Current search depth
-- Nodes explored
-- Branches pruned
-- Evaluation time
-- Nodes per second
-- Best move score
-- Current thinking column
-- Live evaluation bar
+This allows the player to see how much computation the AI is performing while making its decision.
 
-This turns the game into more than a playable application — it also acts as a visual demonstration of how classical game-search algorithms work.
+### 💡 AI Hint System
 
----
+In Human vs AI mode, players can request a hint.
 
-### 🎯 Multiple Game Modes
+The hint system performs an AI search on the current board and identifies a strategically optimal move.
 
-Neural Arena supports:
+### 📈 Live AI Visualization
 
-- 👤 **Human vs Human**
-- 👤🤖 **Human vs AI**
-- 🤖🤖 **AI vs AI**
+The interface includes visual indicators inspired by chess-engine analysis:
 
-AI-vs-AI mode is particularly useful for observing how different search strategies perform against each other.
+* AI thinking indicator
+* Evaluation bar
+* Live performance information
+* Search statistics
 
----
+### 🎨 Dynamic Themes
 
-### 🎨 Cinematic Interface
+The game supports multiple visual themes:
 
-The game features a custom Pygame interface designed around a modern arcade/strategy aesthetic.
+* 🌌 Space
+* ⚡ Cyberpunk
+* 💜 Neon
+* 🕹️ Retro Arcade
+* ◼️ Minimalist
 
-Features include:
-
-- Cinematic intro
-- Animated interface elements
-- Responsive/resizable window
-- Fullscreen mode
-- Dynamic visual effects
-- AI thinking indicators
-- Evaluation visualization
-- Game statistics
-- Custom themes
-
-### 🎨 Available Themes
-
-- 🌌 Space
-- 🟣 Cyberpunk
-- 🟢 Neon
-- 🕹️ Retro Arcade
-- ⚪ Minimalist
-
----
-
-### 🔊 Dynamic Audio
-
-The project includes an integrated audio system with:
-
-- Menu ambience
-- Gameplay ambience
-- Programmatically generated audio
-- Audio transitions between game states
-
-The project does not depend on external audio assets.
-
----
+Themes can be changed dynamically during the game.
 
 ### 📜 Match History
 
-Completed matches are automatically recorded in:
+Previous games are stored using a JSON-based persistence system.
+
+The history system records information such as:
+
+* Game mode
+* Winner
+* Number of moves
+* Match duration
+* Previous game results
+
+### 🔊 Procedural Audio
+
+Instead of relying entirely on pre-recorded audio files, the project uses **NumPy-based waveform generation** to create parts of the game's audio experience.
+
+The audio system can generate:
+
+* Ambient background sounds
+* Sine-wave tones
+* Square-wave effects
+* Atmospheric sound effects
+
+### 🖥️ Responsive UI
+
+The interface includes:
+
+* Dynamic resolution scaling
+* Fullscreen support
+* Animated backgrounds
+* Particle effects
+* Glassmorphism-inspired panels
+* Neon-style visual elements
+* Animated game interactions
+
+---
+
+# 🧮 AI Architecture
+
+The AI follows a game-tree search approach.
 
 ```text
-match_history.json
+                    Current Board
+                         │
+                         ▼
+                  Generate Moves
+                         │
+                         ▼
+                  Minimax Search
+                         │
+                         ▼
+               Alpha-Beta Pruning
+                         │
+                         ▼
+              Heuristic Evaluation
+                         │
+                         ▼
+                 Best Move Selected
+                         │
+                         ▼
+                   Update Board
+```
+
+---
+
+## Minimax Algorithm
+
+The **Minimax algorithm** is used as the fundamental decision-making technique.
+
+It recursively explores possible future game states and assumes that both players will make optimal decisions.
+
+The AI attempts to:
+
+* Maximize its own score
+* Minimize the opponent's score
+* Select the move with the strongest expected outcome
+
+---
+
+## Alpha-Beta Pruning
+
+Searching every possible game state can become computationally expensive.
+
+**Alpha-Beta Pruning** improves Minimax by eliminating branches of the search tree that cannot influence the final decision.
+
+This allows the AI to:
+
+* Explore deeper positions
+* Reduce unnecessary calculations
+* Make decisions faster
+* Improve overall performance
+
+---
+
+## Heuristic Evaluation
+
+The AI cannot always search until the end of the game, especially at higher search depths.
+
+Therefore, a heuristic evaluation function estimates the strength of a board position.
+
+The evaluation considers factors such as:
+
+* Center-column control
+* Two-in-a-row formations
+* Three-in-a-row formations
+* Potential winning combinations
+* Opponent threats
+* Defensive opportunities
+* Open-ended chains
+
+This gives the AI a strategic understanding of positions that are not immediately winning or losing.
+
+---
+
+# 🎮 How Connect4 Works
+
+The game uses the standard **6 × 7 Connect4 board**.
+
+Players take turns dropping discs into columns.
+
+The objective is to connect four discs:
+
+```text
+Horizontal
+● ● ● ●
+
+Vertical
+●
+●
+●
+●
+
+Diagonal
+●
+  ●
+    ●
+      ●
+```
+
+The first player to create a sequence of four wins the game.
+
+---
+
+# 📊 Telemetry Explained
+
+The telemetry panel provides insight into the AI's search process.
+
+| Metric               | Description                                                  |
+| -------------------- | ------------------------------------------------------------ |
+| **Search Depth**     | Number of future moves explored by the AI                    |
+| **Nodes Explored**   | Number of board states evaluated                             |
+| **Nodes/sec**        | Speed at which the AI evaluates states                       |
+| **Branches Pruned**  | Number of unnecessary branches removed by Alpha-Beta pruning |
+| **Evaluation Score** | Estimated strategic advantage of the current position        |
+| **Best Move**        | Move selected by the AI                                      |
+
+This turns the game into more than a simple board game—it also acts as a small **AI search visualization system**.
+
+---
+
+# 🏗️ Project Structure
+
+```text
+CONNECT4/
+│
+├── ai.py                  # AI algorithms and decision-making
+├── audio.py               # Procedural audio generation
+├── board.py               # Connect4 board and game rules
+├── config.py              # Game configuration and constants
+├── history.py             # Match history and JSON persistence
+├── main.py                # Main program and game loop
+├── states.py              # Game-state management
+├── ui.py                  # User interface and visual components
+│
+├── match_history.json     # Stored match history
+├── requirements.txt       # Python dependencies
+├── main.spec              # PyInstaller configuration
+├── Neural Arena.spec      # Executable build configuration
+│
+└── .github/
+    └── workflows/
+        └── main.yml       # GitHub Actions deployment workflow
+```
+
+---
+
+# 🔧 Technologies Used
+
+| Technology         | Purpose                                    |
+| ------------------ | ------------------------------------------ |
+| **Python**         | Core programming language                  |
+| **Pygame**         | Game engine, graphics and event handling   |
+| **NumPy**          | Numerical computation and procedural audio |
+| **JSON**           | Persistent match history                   |
+| **PyInstaller**    | Windows executable packaging               |
+| **GitHub Actions** | Automated build and release pipeline       |
+
+---
+
+# 🚀 Running the Project
+
+## Requirements
+
+Make sure Python 3.11+ is installed.
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the game:
+
+```bash
+python main.py
+```
+
+---
+
+# 📦 Windows Executable
+
+The project can also be distributed as a standalone Windows executable using **PyInstaller**.
+
+Example build command:
+
+```bash
+pyinstaller --noconsole --onefile --clean --name "Neural Arena" main.py
+```
+
+The executable will be generated inside:
+
+```text
+dist/
+```
+
+---
+
+# ⚙️ Automated Deployment
+
+The project includes a **GitHub Actions CI/CD workflow**.
+
+The workflow can:
+
+1. Set up a Windows build environment
+2. Install Python
+3. Install project dependencies
+4. Install PyInstaller
+5. Build the executable
+6. Upload the executable as an artifact
+7. Create a GitHub Release when a version tag is used
+
+This allows the project to be built and packaged without depending on the developer's local environment.
+
+---
+
+# 🎯 Learning Objectives
+
+This project demonstrates practical applications of:
+
+* Artificial Intelligence
+* Adversarial search
+* Minimax
+* Alpha-Beta pruning
+* Heuristic evaluation
+* Recursion
+* Game-tree exploration
+* State management
+* Data persistence
+* Procedural audio generation
+* UI/UX design
+* Performance monitoring
+* Software packaging
+* CI/CD deployment
+
+---
+
+# 🔮 Future Improvements
+
+Possible future enhancements include:
+
+* 🌐 Online multiplayer
+* 🏆 Global leaderboard
+* 🧠 Reinforcement Learning-based AI
+* 🌳 Monte Carlo Tree Search (MCTS)
+* 🎥 Game replay system
+* 📱 Mobile version
+* ☁️ Cloud-based match statistics
+* 🤝 Multiplayer matchmaking
+* 📊 More advanced AI analytics
+
+---
+
+# 👨‍💻 Project
+
+**CONNECT4: Neural Arena**
+
+Developed as an Artificial Intelligence project demonstrating the practical implementation of game-playing AI algorithms using Python and Pygame.
+
+### Core AI Techniques
+
+**Minimax + Alpha-Beta Pruning + Heuristic Evaluation**
+
+> *Think. Search. Predict. Connect.*
+
+---
