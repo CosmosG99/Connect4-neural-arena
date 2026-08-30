@@ -19,6 +19,10 @@ The project focuses on demonstrating how **Artificial Intelligence search algori
 The project also goes beyond basic gameplay by providing real-time insight into the AI's decision-making process through an interactive telemetry system.
 
 ---
+<img width="1025" height="601" alt="image" src="https://github.com/user-attachments/assets/0c22e1f5-9ecd-4ca8-9954-e9359d4c0a61" />
+<img width="1017" height="595" alt="image" src="https://github.com/user-attachments/assets/4fb34b72-2ed4-4f1b-9caa-ed6ea03e5e32" />
+<img width="1012" height="591" alt="image" src="https://github.com/user-attachments/assets/13839cf4-f561-4863-9d69-7b7f80b9ac1f" />
+
 
 ## ✨ Features
 
